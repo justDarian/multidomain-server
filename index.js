@@ -10,6 +10,7 @@ const endpoints = require('./routes.js'); // ./ :fire:
 const port = 80;
 
 app.enable('trust proxy'); // wtf?? this was just in express example
+app.use(express.json()); // never forget express.json
 app.use(cors()); // this carried production ong, i kept getting cors errors :sob:
 
 // make endpoint for the array in routes.js
