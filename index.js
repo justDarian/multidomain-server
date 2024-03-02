@@ -16,7 +16,7 @@ app.use(cors()); // this carried production ong, i kept getting cors errors :sob
 // make endpoint for the array in routes.js
 endpoints.forEach(({ domain, endpoint, callback }) => {
   app.use((req, res, next) => {
-    if (req.hostname === domain && req.url.startsWith(endpoint)) {
+    if (req.hostname === domain && req.url === endpoint) {
       callback(req, res, next);
     } else {
       next();
