@@ -50,17 +50,7 @@ app.use((req, res, next) => {
 
 // making this a function becuase i said so
 function handleNotFound(req, res) {
-  // wtf do i name this shit
-  // (also, you can chane this)
-  const notFoundPath = path.join(path.join(__dirname, 'sites'), '404.html');
-  fs.exists(notFoundPath, (exists) => {
-    if (exists) {
-      // make sure the file doesnt include shit people can exploit, yk??
-      res.status(404).sendFile(notFoundPath);
-    } else {
-      res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ") // haha get trolled!!! (i spent 4 hours trying to figure out why req.redirect wasnt working, send help)
-    }
-  });
+  res.status(404).sendFile(path.join(path.join(__dirname, 'sites'), '404.html') ? path.join(path.join(__dirname, 'sites'), '404.html') : path.join(__dirname, 'sites', req.hostname));
 }
 
 app.listen(port, () => {
